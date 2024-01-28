@@ -11,6 +11,9 @@ public class User {
     private Integer age;
     private static double height;
 
+    public User() {
+    }
+
     public User(String name, String email, Integer age, double height) {
         this.name = name;
         this.email = email;
@@ -72,7 +75,7 @@ public class User {
         return Objects.hash(name, email, age, height);
     }
 
-    public static User registerUser(Scanner sc, List<String> questions) {
+    public User registerUser(Scanner sc, List<String> questions) {
         List<String> answer = new ArrayList<>();
 
         for (String question : questions) {
@@ -93,7 +96,7 @@ public class User {
         return new User(name, email, age, height);
     }
 
-    private static void verifyNameLength(Scanner sc, List<String> answer) {
+    private void verifyNameLength(Scanner sc, List<String> answer) {
         String name = sc.nextLine();
         if (name.length() > 10) {
             answer.add(name);
@@ -104,7 +107,7 @@ public class User {
         }
     }
 
-    private static void verifyEmail(Scanner sc, List<String> answer) {
+    private void verifyEmail(Scanner sc, List<String> answer) {
         String email = sc.nextLine();
         if (answer.contains(email)) {
             System.out.println("Email já cadastrado");
@@ -115,7 +118,7 @@ public class User {
         }
     }
 
-    private static void verifyAge(Scanner sc, List<String> answer) {
+    private void verifyAge(Scanner sc, List<String> answer) {
         int age = Integer.parseInt(sc.nextLine());
         if (age >= 18) {
             answer.add(String.valueOf(age));
@@ -126,7 +129,7 @@ public class User {
         }
     }
 
-    private static void verifyHeight(Scanner sc, List<String> answer) {
+    private void verifyHeight(Scanner sc, List<String> answer) {
         String heightString = sc.nextLine();
 
         if (heightString.contains(",")) {

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Questions {
-    public static List<String> readQuestions(String filePath) {
+    public List<String> readQuestions(String filePath) {
         List<String> questions = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -20,7 +20,7 @@ public class Questions {
         return questions;
     }
 
-    public static void saveAnswers(User user, String outputDirectory) {
+    public void saveAnswers(User user, String outputDirectory) {
         String filename = user.getName().toUpperCase().replace(" ", "") + ".TXT";
         String outputPath = outputDirectory + "\\" + filename;
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputPath))) {
@@ -32,7 +32,7 @@ public class Questions {
         }
     }
 
-    public static void createNewQuestion(String newQuestion, String filepath) {
+    public void createNewQuestion(String newQuestion, String filepath) {
         List<String> questions = readQuestions(filepath);
         int numberingOfQuestions = questions.size() + 1;
         String formattedQuestion = numberingOfQuestions + " - " + newQuestion;
@@ -44,7 +44,7 @@ public class Questions {
         }
     }
 
-    public static void writeQuestions(List<String> questions, String filepath) {
+    public void writeQuestions(List<String> questions, String filepath) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filepath))) {
             for (String question : questions) {
                 bw.write(question);
@@ -56,7 +56,7 @@ public class Questions {
         }
     }
 
-    public static void removeQuestion(int numberOfQuestion, String filepath) {
+    public void removeQuestion(int numberOfQuestion, String filepath) {
         List<String> questions = readQuestions(filepath);
 
         if (numberOfQuestion >= 1 && numberOfQuestion <= 4) {
@@ -69,7 +69,7 @@ public class Questions {
             System.out.println("Número de pergunta inválido");
         }
     }
-    private static void reorganizeQuestionNumbers(List<String> questions) {
+    private void reorganizeQuestionNumbers(List<String> questions) {
         for (int i = 0; i < questions.size(); i++) {
             String currentQuestion = questions.get(i);
             int dashIndex = currentQuestion.indexOf('-');

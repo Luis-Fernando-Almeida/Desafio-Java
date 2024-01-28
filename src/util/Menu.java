@@ -23,4 +23,19 @@ public class Menu {
         System.out.println("5 - Buscar um usuário");
         System.out.println("6 - Encerrar o programa");
     }
+    public static int stringToIntConverter(String input) {
+        try{
+            return switch (input.toLowerCase()) {
+                case "um" -> 1;
+                case "dois" -> 2;
+                case "três" -> 3;
+                case "quatro" -> 4;
+                case "cinco" -> 5;
+                case "seis" -> 6;
+                default -> -1;
+            };
+        } catch (NumberFormatException e) {
+            return -1;
+        }
+    }
 }

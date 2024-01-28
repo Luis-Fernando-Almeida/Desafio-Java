@@ -19,6 +19,7 @@ public class Questions {
         }
         return questions;
     }
+
     public static void saveAnswers(User user, String outputDirectory) {
         String filename = user.getName().toUpperCase().replace(" ", "") + ".TXT";
         String outputPath = outputDirectory + "\\" + filename;
@@ -30,6 +31,7 @@ public class Questions {
             e.printStackTrace();
         }
     }
+
     public static void createNewQuestion(String newQuestion, String filepath) {
         List<String> questions = readQuestions(filepath);
         int numberingOfQuestions = questions.size() + 1;
@@ -41,6 +43,7 @@ public class Questions {
             e.getMessage();
         }
     }
+
     public static void writeQuestions(List<String> questions, String filepath) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filepath))) {
             for (String question : questions) {
@@ -52,6 +55,7 @@ public class Questions {
             System.out.println("Erro ao escrever no arquivo: " + e.getMessage());
         }
     }
+
     public static void removeQuestion(int numberOfQuestion, String filepath) {
         List<String> questions = readQuestions(filepath);
 

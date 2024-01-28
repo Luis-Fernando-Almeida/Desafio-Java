@@ -1,5 +1,7 @@
 package util;
 
+import java.util.NoSuchElementException;
+
 public class Menu {
     public static boolean startProgram = true;
 
@@ -23,19 +25,45 @@ public class Menu {
         System.out.println("5 - Buscar um usuário");
         System.out.println("6 - Encerrar o programa");
     }
-    public static int stringToIntConverter(String input) {
-        try{
-            return switch (input.toLowerCase()) {
-                case "um" -> 1;
-                case "dois" -> 2;
-                case "três" -> 3;
-                case "quatro" -> 4;
-                case "cinco" -> 5;
-                case "seis" -> 6;
-                default -> -1;
-            };
+
+    public static int convertStringToInt(String input) {
+        return switch (input.toLowerCase()) {
+            case "um" -> 1;
+            case "dois" -> 2;
+            case "três" -> 3;
+            case "quatro" -> 4;
+            case "cinco" -> 5;
+            case "seis" -> 6;
+            default -> 0;
+        };
+    }
+
+    public static int convertInputToNumeric(String input) {
+        try {
+            int numericChoice = Integer.parseInt(input.trim());
+            if (numericChoice >= 1 && numericChoice <= 6) {
+                return numericChoice;
+            } else {
+                System.out.println("Opção inválida");
+                return -1;
+            }
         } catch (NumberFormatException e) {
             return -1;
         }
     }
+
+    public static int convertUserChoice(String userChoice) {
+        int numericChoice = convertInputToNumeric(userChoice);
+
+        if (numericChoice == -1) {
+            numericChoice = convertStringToInt(userChoice);
+            if (numericChoice == -1) {
+                System.out.println("Erro: entrada inválida");
+                return -1;
+            }
+        }
+        return numericChoice;
+    }
 }
+
+

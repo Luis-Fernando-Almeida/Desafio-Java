@@ -78,16 +78,12 @@ public class User {
         for (String question : questions) {
             System.out.println(question);
 
-            if (question.contains("nome")) {
-                verifyNameLength(sc, answer);
-            } else if (question.contains("email")) {
-                verifyEmail(sc, answer);
-            } else if (question.contains("idade")) {
-                verifyAge(sc, answer);
-            } else if (question.contains("altura")) {
-                verifyHeight(sc, answer);
-            } else {
-                answer.add(sc.nextLine());
+            switch (question){
+                case "nome" -> verifyNameLength(sc,answer);
+                case "email" -> verifyEmail(sc, answer);
+                case "idade" -> verifyAge(sc, answer);
+                case "altura" -> verifyHeight(sc, answer);
+                default -> answer.add(sc.nextLine());
             }
         }
         String name = answer.get(0);

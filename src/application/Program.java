@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
 import static entities.User.registerUser;
 import static util.Menu.*;
 import static util.Questions.*;
@@ -30,7 +29,8 @@ public class Program {
         while (Menu.isStartProgram()) {
             printMenu();
             String userChoice = sc.nextLine().trim();
-            int numericChoice = stringToIntConverter(userChoice);
+
+            int numericChoice = convertUserChoice(userChoice);
 
             switch (numericChoice) {
                 case 1:
@@ -77,7 +77,6 @@ public class Program {
                 case 6:
                     startProgram = false;
                     System.out.println("Programa encerrado");
-                    sc.close();
                     break;
                 default:
                     System.out.println("Opção inválida");

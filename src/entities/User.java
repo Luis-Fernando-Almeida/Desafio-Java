@@ -9,7 +9,7 @@ public class User {
     private String name;
     private String email;
     private Integer age;
-    private static double height;
+    private double height;
 
     public User() {
     }
@@ -81,12 +81,16 @@ public class User {
         for (String question : questions) {
             System.out.println(question);
 
-            switch (question){
-                case "nome" -> verifyNameLength(sc,answer);
-                case "email" -> verifyEmail(sc, answer);
-                case "idade" -> verifyAge(sc, answer);
-                case "altura" -> verifyHeight(sc, answer);
-                default -> answer.add(sc.nextLine());
+            if (question.contains("nome")) {
+                verifyNameLength(sc, answer);
+            } else if (question.contains("email")) {
+                verifyEmail(sc, answer);
+            } else if (question.contains("idade")) {
+                verifyAge(sc, answer);
+            } else if (question.contains("altura")) {
+                verifyHeight(sc, answer);
+            } else {
+                answer.add(sc.nextLine());
             }
         }
         String name = answer.get(0);
@@ -132,8 +136,8 @@ public class User {
     private void verifyHeight(Scanner sc, List<String> answer) {
         String heightString = sc.nextLine();
 
-        if (heightString.contains(",")) {
-            System.out.println("Use '.' como separador decimal ");
+        if (heightString.contains(".")) {
+            System.out.println("Use ',' como separador decimal ");
             System.out.println("Tente novamente:");
             verifyHeight(sc, answer);
         } else {

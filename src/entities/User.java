@@ -136,8 +136,8 @@ public class User {
     private void verifyHeight(Scanner sc, List<String> answer) {
         String heightString = sc.nextLine();
 
-        if (heightString.contains(".")) {
-            System.out.println("Use ',' como separador decimal ");
+        if (heightString.contains(",")) {
+            System.out.println("Use '.' como separador decimal ");
             System.out.println("Tente novamente:");
             verifyHeight(sc, answer);
         } else {
@@ -148,7 +148,7 @@ public class User {
             } catch (NumberFormatException e) {
                 System.out.println("Formato inválido. Insira um número válido");
                 System.out.println("Tente novamente:");
-                verifyAge(sc, answer);
+                verifyHeight(sc, answer);
             }
         }
     }

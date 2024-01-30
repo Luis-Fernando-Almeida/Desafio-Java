@@ -25,42 +25,42 @@ public class Program {
         new File(outputDirectory).mkdirs();
 
         User user = new User();
-        Questions questionsInstance = new Questions();
+        Questions questionsInstance = new Questions(outputDirectory);
 
         while (Menu.isStartProgram()) {
             printMenu();
-            String userChoice = sc.nextLine().trim();
+            String userChoice = sc.nextLine();
 
             int numericChoice = convertUserChoice(userChoice);
 
-            switch (numericChoice) {
-                case 1:
+            switch (String.valueOf(numericChoice)) {
+                case "1":
                     List<String> questions = questionsInstance.readQuestions(inputPath);
                     User newUser = user.registerUser(sc, questions);
                     userList.add(newUser);
-                    questionsInstance.saveAnswers(newUser, outputDirectory);
+                    questionsInstance.saveAnswers(newUser);
                     System.out.println(newUser);
                     System.out.println();
                     break;
-                case 2:
+                case "2":
                     List<String> names = userList.stream().map(User::getName).toList();
                     names.forEach(System.out::println);
                     System.out.println();
                     break;
-                case 3:
+                case "3":
                     System.out.println("Digite a nova pergunta:");
                     String newQuestion = sc.nextLine();
                     questionsInstance.createNewQuestion(newQuestion, inputPath);
                     System.out.println();
                     break;
-                case 4:
+                case "4":
                     System.out.println("Digite o número da pergunta que deseja excluir");
                     int deleteQuestion = sc.nextInt();
                     sc.nextLine();
                     questionsInstance.removeQuestion(deleteQuestion, inputPath);
                     System.out.println();
                     break;
-                case 5:
+                case "5":
                     System.out.println("Digite o valor que deseja buscar: nome, email ou idade");
                     String search = sc.nextLine().toLowerCase();
                     List<User> result = userList.stream()
@@ -75,7 +75,7 @@ public class Program {
                         System.out.println();
                     }
                     break;
-                case 6:
+                case "6":
                     startProgram = false;
                     System.out.println("Programa encerrado");
                     break;

@@ -26,7 +26,8 @@ public class Menu {
         System.out.println("6 - Encerrar o programa");
     }
 
-    public static int convertStringToInt(String input) {
+
+     public static int convertStringToInt(String input) {
         return switch (input.toLowerCase()) {
             case "um" -> 1;
             case "dois" -> 2;

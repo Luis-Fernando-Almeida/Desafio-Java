@@ -7,6 +7,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Questions {
+
+    private  String outputDirectory;
+
+    public Questions() {
+    }
+    public Questions(String outputDirectory) {
+        this.outputDirectory = outputDirectory;
+    }
+
+    public String getOutputDirectory() {
+        return outputDirectory;
+    }
+
     public List<String> readQuestions(String filePath) {
         List<String> questions = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -20,7 +33,7 @@ public class Questions {
         return questions;
     }
 
-    public void saveAnswers(User user, String outputDirectory) {
+    public void saveAnswers(User user) {
         String filename = user.getName().toUpperCase().replace(" ", "") + ".TXT";
         String outputPath = outputDirectory + "\\" + filename;
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputPath))) {
@@ -80,6 +93,8 @@ public class Questions {
             }
         }
     }
+
+
 }
 
 

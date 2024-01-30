@@ -26,12 +26,13 @@ public class Program {
 
         User user = new User();
         Questions questionsInstance = new Questions(outputDirectory);
+        Menu menu = new Menu();
 
-        while (Menu.isStartProgram()) {
-            printMenu();
+        while (Menu.startProgram()) {
+            menu.printMenu();
             String userChoice = sc.nextLine();
 
-            int numericChoice = convertUserChoice(userChoice);
+            int numericChoice = menu.convertUserChoice(userChoice);
 
             switch (String.valueOf(numericChoice)) {
                 case "1":

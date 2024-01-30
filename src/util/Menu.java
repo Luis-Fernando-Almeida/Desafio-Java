@@ -3,20 +3,25 @@ package util;
 import java.util.NoSuchElementException;
 
 public class Menu {
+
     public static boolean startProgram = true;
 
     public Menu() {
     }
 
-    public static boolean isStartProgram() {
+    public static boolean startProgram() {
+        return true;
+    }
+
+    public  boolean isStartProgram() {
         return startProgram;
     }
 
-    public static void setStartProgram(boolean startProgram) {
+    public  void setStartProgram(boolean startProgram) {
         Menu.startProgram = startProgram;
     }
 
-    public static void printMenu() {
+    public void printMenu() {
         System.out.println("Digite um valor correspondente à uma das opções abaixo:");
         System.out.println("1 - Cadastrar um usuário");
         System.out.println("2 - Listar todos os usuários cadastrados");
@@ -27,7 +32,7 @@ public class Menu {
     }
 
 
-     public static int convertStringToInt(String input) {
+     public int convertStringToInt(String input) {
         return switch (input.toLowerCase()) {
             case "um" -> 1;
             case "dois" -> 2;
@@ -39,7 +44,7 @@ public class Menu {
         };
     }
 
-    public static int convertInputToNumeric(String input) {
+    public int convertInputToNumeric(String input) {
         try {
             int numericChoice = Integer.parseInt(input.trim());
             if (numericChoice >= 1 && numericChoice <= 6) {
@@ -53,7 +58,7 @@ public class Menu {
         }
     }
 
-    public static int convertUserChoice(String userChoice) {
+    public int convertUserChoice(String userChoice) {
         int numericChoice = convertInputToNumeric(userChoice);
 
         if (numericChoice == -1) {

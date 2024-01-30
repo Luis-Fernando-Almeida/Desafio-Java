@@ -6,13 +6,13 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Questions {
+public class QuestionsData {
 
     private  String outputDirectory;
 
-    public Questions() {
+    public QuestionsData() {
     }
-    public Questions(String outputDirectory) {
+    public QuestionsData(String outputDirectory) {
         this.outputDirectory = outputDirectory;
     }
 

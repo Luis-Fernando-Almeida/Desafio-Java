@@ -2,7 +2,7 @@ package application;
 
 import entities.User;
 import util.Menu;
-import util.Questions;
+import util.QuestionsData;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import static util.Menu.*;
-import static util.Questions.*;
 
 public class Program {
 
@@ -25,7 +24,7 @@ public class Program {
         new File(outputDirectory).mkdirs();
 
         User user = new User();
-        Questions questionsInstance = new Questions(outputDirectory);
+        QuestionsData questionsInstance = new QuestionsData(outputDirectory);
         Menu menu = new Menu();
 
         while (Menu.startProgram()) {
